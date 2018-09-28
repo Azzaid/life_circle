@@ -19,26 +19,26 @@ export default class HabitTrackerScene extends Component {
       habits: [
         {name:'Пить 2 литра воды в день', goal: 2000, downshift:30, image:elephantImage1},
         {name:'Выполнять "Приветствие солнцу" 30 минут', goal: 30, downshift:80, image:elephantImage2},
-        {name:'Не злится хотя-бы до обеда', goal: 16, downshift:80, image:elephantImage3},
+        {name:'Не злиться хотя-бы до обеда', goal: 16, downshift:80, image:elephantImage3},
         {name:'Просыпаться без кофе', goal: 16, downshift:30, image:elephantImage4},
       ],
       days: [
         {date: '26/09/2019', habits: {
           'Пить 2 литра воды в день':{moodIndex: 1, amount: 2000},
             'Выполнять "Приветствие солнцу" 30 минут':{moodIndex: 1, amount: 30},
-            'Не злится хотя-бы до обеда':{moodIndex: 1, amount: 16},
+            'Не злиться хотя-бы до обеда':{moodIndex: 1, amount: 16},
             'Просыпаться без кофе':{moodIndex: 1, amount: 16},
           }},
         {date: '27/09/2019', habits: {
             'Пить 2 литра воды в день':{moodIndex: 1, amount: 1500},
             'Выполнять "Приветствие солнцу" 30 минут':{moodIndex: 1, amount: 20},
-            'Не злится хотя-бы до обеда':{moodIndex: 1, amount: 13},
+            'Не злиться хотя-бы до обеда':{moodIndex: 1, amount: 13},
             'Просыпаться без кофе':{moodIndex: 1, amount: 10},
           }},
         {date: '28/09/2019', habits: {
             'Пить 2 литра воды в день':{moodIndex: 1, amount: 2000},
             'Выполнять "Приветствие солнцу" 30 минут':{moodIndex: 1, amount: 40},
-            'Не злится хотя-бы до обеда':{moodIndex: 1, amount: 16},
+            'Не злиться хотя-бы до обеда':{moodIndex: 1, amount: 16},
             'Просыпаться без кофе':{moodIndex: 1, amount: 20},
           }},
       ],
