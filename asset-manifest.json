@@ -1,8 +1,12 @@
 {
-  "main.css": "static/css/main.d61a3ea0.css",
-  "main.css.map": "static/css/main.d61a3ea0.css.map",
-  "main.js": "static/js/main.433da067.js",
-  "main.js.map": "static/js/main.433da067.js.map",
-  "static\\media\\logo.svg": "static/media/logo.5d5d9eef.svg",
+  "main.css": "static/css/main.ea7cc321.css",
+  "main.css.map": "static/css/main.ea7cc321.css.map",
+  "main.js": "static/js/main.ed93a416.js",
+  "main.js.map": "static/js/main.ed93a416.js.map",
+  "static\\media\\el_1.jpg": "static/media/el_1.dd1c4fa9.jpg",
+  "static\\media\\el_2.jpg": "static/media/el_2.c2a0f73a.jpg",
+  "static\\media\\el_3.png": "static/media/el_3.214f8843.png",
+  "static\\media\\el_4.png": "static/media/el_4.59bc2cd5.png",
+  "static\\media\\el_5.jpg": "static/media/el_5.e0443c31.jpg",
   "static\\media\\vitruvian.png": "static/media/vitruvian.b3a5b21c.png"
 }
