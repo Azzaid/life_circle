@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import '../styles/LifeCircleScene.css';
 
 export default class LifeCircleScene extends Component {
   constructor(props) {

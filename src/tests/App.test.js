@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './LifeCircleScene';
+import App from '../scenes/LifeCircleScene';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-//import './HabbitTrackerScene.css';
 import { withRouter } from 'react-router-dom';
+//import './HabitTrackerScene.css';
 
  class HeaderComponent extends Component {
   constructor(props) {

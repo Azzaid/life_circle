@@ -1,0 +1,22 @@
+.elephant-tower {
+    display: flex;
+    justify-content: center;
+}
+
+.tower-column-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.table-cell {
+    width: 150px;
+    display: flex;
+    justify-content: center;
+}
+
+.elephant {
+    background-position: center;
+    background-size:contain;
+    background-repeat: no-repeat;
+}

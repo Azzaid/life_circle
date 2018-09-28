@@ -1,8 +1,8 @@
 import React from 'react';
 import { Route, Switch, Redirect, BrowserRouter, withRouter } from 'react-router-dom';
 
-import LifeCircleScene from './LifeCircleScene';
-import HabbitTrackerScene from './HabbitTrackerScene';
+import LifeCircleScene from '../scenes/LifeCircleScene';
+import HabitTrackerScene from '../scenes/HabitTrackerScene';
 import HeaderComponent from './HeaderComponent';
 
 export default class RootRouter extends React.Component {
@@ -18,7 +18,7 @@ export default class RootRouter extends React.Component {
           <HeaderComponent/>
           <Switch>
             <Route exact path={'/life_circle'} render={this.renderScene(LifeCircleScene)}/>
-            <Route exact path={'/habbit_tracker'} render={this.renderScene(HabbitTrackerScene)}/>
+            <Route exact path={'/habbit_tracker'} render={this.renderScene(HabitTrackerScene)}/>
             <Redirect to={'/habbit_tracker'}/>
           </Switch>
           </React.Fragment>

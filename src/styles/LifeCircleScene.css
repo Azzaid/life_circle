@@ -91,6 +91,6 @@
   position: absolute;
   width: 2px;
   height: 2px;
-  background: url("./vitruvian.png") center;
+  background: url("../images/vitruvian.png") center;
   background-size:contain;
 }
