@@ -2,12 +2,10 @@ import React, { Component } from 'react';
 
 import '../styles/HabitTrackerScene.css';
 
-import elephantImage1 from '../images/el_1.jpg'
-import elephantImage2 from '../images/el_2.jpg'
+import elephantImage1 from '../images/el_1.png'
+import elephantImage2 from '../images/el_2.png'
 import elephantImage3 from '../images/el_3.png'
 import elephantImage4 from '../images/el_4.png'
-import elephantImage5 from '../images/el_5.jpg'
-import turtleImage5 from '../images/turtle.png'
 
 export default class HabitTrackerScene extends Component {
   constructor(props) {
@@ -19,35 +17,29 @@ export default class HabitTrackerScene extends Component {
         maxElephantWidth: 170,
       },
       habits: [
-        {name:'Kill all others', goal: 100},
-        {name:'Drink', goal: 10},
-        {name:'Do magic', goal: 10},
-        {name:'Burn the world', goal: 100},
+        {name:'Пить 2 литра воды в день', goal: 2000, downshift:30, image:elephantImage1},
+        {name:'Выполнять "Приветствие солнцу" 30 минут', goal: 30, downshift:80, image:elephantImage2},
+        {name:'Не злится хотя-бы до обеда', goal: 16, downshift:80, image:elephantImage3},
+        {name:'Просыпаться без кофе', goal: 16, downshift:30, image:elephantImage4},
       ],
       days: [
-        {date: '02/03/2020', habits: {
-          'Kill all others':{moodIndex: 1, amount: 80},
-            'Drink':{moodIndex: 1, amount: 5},
-            'Do magic':{moodIndex: 1, amount: 6},
-            'Burn the world':{moodIndex: 1, amount: 40},
+        {date: '26/09/2019', habits: {
+          'Пить 2 литра воды в день':{moodIndex: 1, amount: 2000},
+            'Выполнять "Приветствие солнцу" 30 минут':{moodIndex: 1, amount: 30},
+            'Не злится хотя-бы до обеда':{moodIndex: 1, amount: 16},
+            'Просыпаться без кофе':{moodIndex: 1, amount: 16},
           }},
-        {date: '03/03/2020', habits: {
-            'Kill all others':{moodIndex: 1, amount: 100},
-            'Drink':{moodIndex: 1, amount: 4},
-            'Do magic':{moodIndex: 1, amount: 8},
-            'Burn the world':{moodIndex: 1, amount: 70},
+        {date: '27/09/2019', habits: {
+            'Пить 2 литра воды в день':{moodIndex: 1, amount: 1500},
+            'Выполнять "Приветствие солнцу" 30 минут':{moodIndex: 1, amount: 20},
+            'Не злится хотя-бы до обеда':{moodIndex: 1, amount: 13},
+            'Просыпаться без кофе':{moodIndex: 1, amount: 10},
           }},
-        {date: '04/03/2020', habits: {
-            'Kill all others':{moodIndex: 1, amount: 50},
-            'Drink':{moodIndex: 1, amount: 6},
-            'Do magic':{moodIndex: 1, amount: 6},
-            'Burn the world':{moodIndex: 1, amount: 50},
-          }},
-        {date: '05/03/2020', habits: {
-            'Kill all others':{moodIndex: 1, amount: 100},
-            'Drink':{moodIndex: 1, amount: 10},
-            'Do magic':{moodIndex: 1, amount: 10},
-            'Burn the world':{moodIndex: 1, amount: 100},
+        {date: '28/09/2019', habits: {
+            'Пить 2 литра воды в день':{moodIndex: 1, amount: 2000},
+            'Выполнять "Приветствие солнцу" 30 минут':{moodIndex: 1, amount: 40},
+            'Не злится хотя-бы до обеда':{moodIndex: 1, amount: 16},
+            'Просыпаться без кофе':{moodIndex: 1, amount: 20},
           }},
       ],
       moods: [
@@ -81,9 +73,20 @@ export default class HabitTrackerScene extends Component {
       <section className='habit-tracker'>
         <div className='flat-earth'/>
         <div className='elephant-tower'>
+          <div className='tower-column-wrapper'>
+            {days.map(day => {
+              return (
+                <div className='table-cell'>
+                  <div className='date-field'>
+                    {day.date}
+                  </div>
+                </div>
+              )
+            })}
+          </div>
           {habits.map(habit => {
             return (
-              <div className='tower-column-wrapper'>
+              <div className='tower-column-wrapper' style={{top:`${habit.downshift}px`}}>
                 {days.map(day => {
                   let accomplishPercent = day.habits[habit.name].amount / habit.goal;
                   let randomImageNumber = Math.floor(Math.random()*this.elephantImagesList.length);
@@ -94,7 +97,7 @@ export default class HabitTrackerScene extends Component {
                       height:`${constants.maxElephantHeight*accomplishPercent}px`,
                       marginBottom:`-${20*accomplishPercent}px`,
                       marginTop:`-${20*accomplishPercent}px`,
-                      backgroundImage:`url('${this.elephantImagesList[randomImageNumber]}')`
+                      backgroundImage:`url('${habit.image}')`
                     }}/>
                     </div>
                   )
@@ -104,6 +107,15 @@ export default class HabitTrackerScene extends Component {
           })}
         </div>
         <div className='great-turtle'/>
+        <div className='habits-names-plank'>
+          {habits.map(habit => {
+            return (
+              <div className='habit-name' style={{width:`${constants.maxElephantWidth}px`,}}>
+                {habit.name}
+              </div>
+            );
+          })}
+        </div>
       </section>
     )
   }

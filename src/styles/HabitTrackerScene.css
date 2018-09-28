@@ -1,6 +1,9 @@
 .habit-tracker{
     width: 1500px;
-    background:url(../images/space.jpg);
+    background:url(../images/space.png);
+    background-color: black;
+    background-repeat: no-repeat;
+    background-position: bottom center;
 }
 
 .flat-earth{
@@ -9,18 +12,21 @@
     margin-bottom: -150px;
     margin-left:404px;
     transform-origin: center bottom;
-    background: url(../images/Earth-half.png);
+    background: url(../images/earth.png);
     background-position: center;
     background-size:contain;
     background-repeat: no-repeat;
 }
 
 .elephant-tower {
+    width: 1350px;
+    margin-right: 150px;
     display: flex;
     justify-content: center;
 }
 
 .tower-column-wrapper {
+    position: relative;
     display: flex;
     flex-direction: column-reverse;
     justify-content: flex-start;
@@ -32,19 +38,57 @@
     justify-content: center;
 }
 
+.date-field {
+    height: 50px;
+    margin: 30px 0;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(30, 43, 88, 0.8);
+    color: rgb(235, 235, 235);
+    font-size: large;
+    text-align: center;
+}
+
 .elephant {
+    position: relative;
+    z-index: 5;
+    background-position: center;
+    background-size:contain;
+    background-repeat: no-repeat;
+    color: aqua;
+}
+
+.great-turtle {
+    width: 1200px;
+    height: 757px;
+    margin-top: -60px;
+    margin-left:65px;
+    transform-origin: center;
+    transform: rotate(-12deg);
+    background: url(../images/turtle.png);
     background-position: center;
     background-size:contain;
     background-repeat: no-repeat;
 }
 
-.great-turtle {
-    width: 1000px;
-    height: 626px;
-    margin-top: -240px;
-    margin-left:222px;
-    background: url(../images/turtle.png);
-    background-position: center;
-    background-size:contain;
-    background-repeat: no-repeat;
+.habits-names-plank {
+    width: 1500px;
+    position: fixed;
+    bottom: 50px;
+    display: flex;
+    justify-content: center;
+    z-index: 10;
+}
+
+.habit-name {
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(30, 43, 88, 0.8);
+    color: rgb(235, 235, 235);
+    font-size: large;
+    text-align: center;
 }
