@@ -7,6 +7,7 @@ import elephantImage2 from '../images/el_2.jpg'
 import elephantImage3 from '../images/el_3.png'
 import elephantImage4 from '../images/el_4.png'
 import elephantImage5 from '../images/el_5.jpg'
+import turtleImage5 from '../images/turtle.png'
 
 export default class HabitTrackerScene extends Component {
   constructor(props) {
@@ -53,21 +54,33 @@ export default class HabitTrackerScene extends Component {
         {Name: 'Боль будет завтра', colorShift: 23}
       ]
     };
-
+    
     this.elephantImagesList = [elephantImage3];
   }
+  
+  getEarthRotation = () => {
+    const {constants, habits, days, moods} = this.state;
+    
+    let habbitsTowersHeight=[];
+    
+    {habits.forEach((habit, index) => {
+      habbitsTowersHeight[habit.name] = 0;
+          {days.forEach(day => {
+            let accomplishPercent = day.habits[habit.name].amount / habit.goal;
+            habbitsTowersHeight[index] = habbitsTowersHeight[index]+constants.maxElephantHeight*accomplishPercent;
+          })}
+    })}
+    console.log(habbitsTowersHeight)
+  };
 
 
   render() {
     const {constants, habits, days, moods} = this.state;
+    this.getEarthRotation();
     return(
       <section className='habit-tracker'>
+        <div className='flat-earth'/>
         <div className='elephant-tower'>
-          <div className='tower-column-wrapper'>
-            {days.map(day => {
-              return <div className='table-cell'>{day.date}</div>
-            })};
-          </div>
           {habits.map(habit => {
             return (
               <div className='tower-column-wrapper'>
@@ -79,7 +92,8 @@ export default class HabitTrackerScene extends Component {
                     <div className='elephant' style={{
                       width:`${constants.maxElephantWidth*accomplishPercent}px`,
                       height:`${constants.maxElephantHeight*accomplishPercent}px`,
-                      opacity:accomplishPercent,
+                      marginBottom:`-${20*accomplishPercent}px`,
+                      marginTop:`-${20*accomplishPercent}px`,
                       backgroundImage:`url('${this.elephantImagesList[randomImageNumber]}')`
                     }}/>
                     </div>
@@ -87,11 +101,9 @@ export default class HabitTrackerScene extends Component {
                 })}
               </div>
             );
-            
-            
           })}
-          
         </div>
+        <div className='great-turtle'/>
       </section>
     )
   }

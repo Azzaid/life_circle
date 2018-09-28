@@ -9,11 +9,11 @@ import { withRouter } from 'react-router-dom';
   }
 
    goHabbitTrackerScene = () => {
-     this.history.push('/habbit_tracker')
+     this.history.push('/life_circle/habbit_tracker')
    };
 
   goToLifeCircleScene = () => {
-    this.history.push('/life_circle')
+    this.history.push('/life_circle/life_goals')
   };
 
   render() {
