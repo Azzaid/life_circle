@@ -1,12 +1,14 @@
 {
-  "main.css": "static/css/main.ea7cc321.css",
-  "main.css.map": "static/css/main.ea7cc321.css.map",
-  "main.js": "static/js/main.119b1ccc.js",
-  "main.js.map": "static/js/main.119b1ccc.js.map",
+  "main.css": "static/css/main.1cfdf01c.css",
+  "main.css.map": "static/css/main.1cfdf01c.css.map",
+  "main.js": "static/js/main.4ec98ed3.js",
+  "main.js.map": "static/js/main.4ec98ed3.js.map",
   "static\\media\\el_1.jpg": "static/media/el_1.dd1c4fa9.jpg",
   "static\\media\\el_2.jpg": "static/media/el_2.c2a0f73a.jpg",
   "static\\media\\el_3.png": "static/media/el_3.214f8843.png",
   "static\\media\\el_4.png": "static/media/el_4.59bc2cd5.png",
   "static\\media\\el_5.jpg": "static/media/el_5.e0443c31.jpg",
+  "static\\media\\space.jpg": "static/media/space.94d5468c.jpg",
+  "static\\media\\turtle.png": "static/media/turtle.c73167ec.png",
   "static\\media\\vitruvian.png": "static/media/vitruvian.b3a5b21c.png"
 }
