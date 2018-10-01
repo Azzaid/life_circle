@@ -1,21 +1,26 @@
 .habit-tracker{
-    width: 1500px;
+    width: 100vw;
+    min-width: 800px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
     background:url(../images/space.png);
     background-color: black;
-    background-repeat: no-repeat;
-    background-position: bottom center;
+    background-repeat: repeat-x;
+    animation: animatedBackground 15s linear infinite;
 }
 
-.flat-earth{
-    width: 727px;
-    height: 626px;
-    margin-bottom: -150px;
-    margin-left:404px;
-    transform-origin: center bottom;
-    background: url(../images/earth.png);
-    background-position: center;
-    background-size:contain;
-    background-repeat: no-repeat;
+@keyframes animatedBackground {
+    from { background-position: 0 100%; }
+    to { background-position: 1500px 100%; }
+}
+
+.earth{
+    position: relative;
+    width: 600px;
+    margin-bottom: -151px;
+    transition: 1s;
+    transition-timing-function:ease-in-out;
 }
 
 .elephant-tower {
@@ -23,6 +28,7 @@
     margin-right: 150px;
     display: flex;
     justify-content: center;
+    transform-origin: center bottom;
 }
 
 .tower-column-wrapper {
@@ -58,13 +64,15 @@
     background-size:contain;
     background-repeat: no-repeat;
     color: aqua;
+    transition: 1s;
+    transition-timing-function:ease-in-out;
 }
 
 .great-turtle {
     width: 1200px;
     height: 757px;
     margin-top: -60px;
-    margin-left:65px;
+    margin-left:-188px;
     transform-origin: center;
     transform: rotate(-12deg);
     background: url(../images/turtle.png);

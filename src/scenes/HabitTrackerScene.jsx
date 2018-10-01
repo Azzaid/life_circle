@@ -6,6 +6,7 @@ import elephantImage1 from '../images/el_1.png'
 import elephantImage2 from '../images/el_2.png'
 import elephantImage3 from '../images/el_3.png'
 import elephantImage4 from '../images/el_4.png'
+import earth from '../images/earth_slow.gif'
 
 export default class HabitTrackerScene extends Component {
   constructor(props) {
@@ -24,37 +25,49 @@ export default class HabitTrackerScene extends Component {
       ],
       days: [
         {date: '26/09/2019', habits: {
-          'Пить 2 литра воды в день':{moodIndex: 1, amount: 2000},
-            'Выполнять "Приветствие солнцу" 30 минут':{moodIndex: 1, amount: 30},
-            'Не злиться хотя-бы до обеда':{moodIndex: 1, amount: 16},
-            'Просыпаться без кофе':{moodIndex: 1, amount: 16},
+          'Пить 2 литра воды в день':{amount: 2000},
+            'Выполнять "Приветствие солнцу" 30 минут':{amount: 30},
+            'Не злиться хотя-бы до обеда':{amount: 16},
+            'Просыпаться без кофе':{amount: 16},
           }},
         {date: '27/09/2019', habits: {
-            'Пить 2 литра воды в день':{moodIndex: 1, amount: 1500},
-            'Выполнять "Приветствие солнцу" 30 минут':{moodIndex: 1, amount: 20},
-            'Не злиться хотя-бы до обеда':{moodIndex: 1, amount: 13},
-            'Просыпаться без кофе':{moodIndex: 1, amount: 10},
+            'Пить 2 литра воды в день':{amount: 1500},
+            'Выполнять "Приветствие солнцу" 30 минут':{amount: 20},
+            'Не злиться хотя-бы до обеда':{amount: 13},
+            'Просыпаться без кофе':{amount: 10},
           }},
         {date: '28/09/2019', habits: {
-            'Пить 2 литра воды в день':{moodIndex: 1, amount: 2000},
-            'Выполнять "Приветствие солнцу" 30 минут':{moodIndex: 1, amount: 40},
-            'Не злиться хотя-бы до обеда':{moodIndex: 1, amount: 16},
-            'Просыпаться без кофе':{moodIndex: 1, amount: 20},
+            'Пить 2 литра воды в день':{amount: 2000},
+            'Выполнять "Приветствие солнцу" 30 минут':{amount: 40},
+            'Не злиться хотя-бы до обеда':{amount: 16},
+            'Просыпаться без кофе':{amount: 20},
+          }},
+        {date: '29/09/2019', habits: {
+            'Пить 2 литра воды в день':{amount: 1000},
+            'Выполнять "Приветствие солнцу" 30 минут':{amount: 15},
+            'Не злиться хотя-бы до обеда':{amount: 16},
+            'Просыпаться без кофе':{amount: 20},
+          }},
+        {date: '30/09/2019', habits: {
+            'Пить 2 литра воды в день':{amount: 2000},
+            'Выполнять "Приветствие солнцу" 30 минут':{amount: 30},
+            'Не злиться хотя-бы до обеда':{amount: 16},
+            'Просыпаться без кофе':{amount: 5},
           }},
       ],
-      moods: [
-        {Name: 'Боль будет завтра', colorShift: 23}
-      ]
+      earthLeftShift:0,
+      earthTopShift:0,
+      elephantTowerSkew:0,
     };
-    
+
     this.elephantImagesList = [elephantImage3];
   }
-  
+
   getEarthRotation = () => {
-    const {constants, habits, days, moods} = this.state;
-    
+    const {constants, habits, days} = this.state;
+
     let habbitsTowersHeight=[];
-    
+
     {habits.forEach((habit, index) => {
       habbitsTowersHeight[habit.name] = 0;
           {days.forEach(day => {
@@ -62,16 +75,22 @@ export default class HabitTrackerScene extends Component {
             habbitsTowersHeight[index] = habbitsTowersHeight[index]+constants.maxElephantHeight*accomplishPercent;
           })}
     })}
-    console.log(habbitsTowersHeight)
+  };
+
+  skewTower = () => {
+    let randomNumber = this.state.elephantTowerSkew > 0 ? -30 : 30;
+    console.log(randomNumber);
+    this.setState({earthLeftShift:randomNumber * (this.state.days.length-1), elephantTowerSkew:randomNumber})
   };
 
 
   render() {
-    const {constants, habits, days, moods} = this.state;
+    const {constants, habits, days, earthLeftShift, elephantTowerSkew} = this.state;
     this.getEarthRotation();
+    setTimeout(() => {this.skewTower()}, 1500);
     return(
       <section className='habit-tracker'>
-        <div className='flat-earth'/>
+        <img className='earth' src={earth} style={{left:`${earthLeftShift}px`}}/>
         <div className='elephant-tower'>
           <div className='tower-column-wrapper'>
             {days.map(day => {
@@ -87,9 +106,8 @@ export default class HabitTrackerScene extends Component {
           {habits.map(habit => {
             return (
               <div className='tower-column-wrapper' style={{top:`${habit.downshift}px`}}>
-                {days.map(day => {
+                {days.map((day, index) => {
                   let accomplishPercent = day.habits[habit.name].amount / habit.goal;
-                  let randomImageNumber = Math.floor(Math.random()*this.elephantImagesList.length);
                   return (
                     <div className='table-cell'>
                     <div className='elephant' style={{
@@ -97,7 +115,8 @@ export default class HabitTrackerScene extends Component {
                       height:`${constants.maxElephantHeight*accomplishPercent}px`,
                       marginBottom:`-${20*accomplishPercent}px`,
                       marginTop:`-${20*accomplishPercent}px`,
-                      backgroundImage:`url('${habit.image}')`
+                      backgroundImage:`url('${habit.image}')`,
+                      left:`${elephantTowerSkew*index/2}px`
                     }}/>
                     </div>
                   )
