@@ -415,6 +415,7 @@ export default class LifeCircleScene extends Component {
       amountOfSolveSteps:3,
       amountOfSolvesPerArea:3,
       unfoldedAreas:0,
+      circleRotationStep:3,
     }
   };
 
@@ -427,13 +428,13 @@ export default class LifeCircleScene extends Component {
   }
 
   getSteps = (circleShift, habbit) => {
-    const {amountOfSteps, circleWidth, circleCenter, habbitSectorAngle} = this.state;
+    const {amountOfSteps, circleWidth, circleCenter, habbitSectorAngle, circleRotationStep} = this.state;
     let i = amountOfSteps;
     let stepList = [];
     while (i !== 0) {
       const stepWidth = 2*circleWidth*(i+1)*Math.sin(habbitSectorAngle / (180 / Math.PI) / 2);
-      const xTranslateFactor = Math.sin(habbitSectorAngle*circleShift / (180 / Math.PI));
-      const yTranslateFactor = Math.cos(habbitSectorAngle*circleShift / (180 / Math.PI));
+      const xTranslateFactor = Math.sin(habbitSectorAngle*(circleShift+circleRotationStep) / (180 / Math.PI));
+      const yTranslateFactor = Math.cos(habbitSectorAngle*(circleShift+circleRotationStep) / (180 / Math.PI));
       const skewLenghtGap = circleWidth*0.8*Math.sin(habbitSectorAngle / (180 / Math.PI) / 2);
       stepList.push(
         <div className='step'
@@ -443,7 +444,7 @@ export default class LifeCircleScene extends Component {
                  height:circleWidth*0.8,
                  top:(circleCenter + (i+1)*circleWidth*yTranslateFactor + stepWidth*xTranslateFactor/2),
                  left:(circleCenter + (i+1)*circleWidth*xTranslateFactor - stepWidth*yTranslateFactor/2),
-                 transform:`rotate(${-1*habbitSectorAngle*circleShift}deg)`}
+                 transform:`rotate(${-1*habbitSectorAngle*(circleShift+circleRotationStep)}deg)`}
              }>
           <div className='rightBorder'
             style={{
@@ -473,11 +474,11 @@ export default class LifeCircleScene extends Component {
       i--;
     }
     const stepWidth = 2*circleWidth*(amountOfSteps+2)*Math.sin(habbitSectorAngle / (180 / Math.PI) / 2);
-    const xTranslateFactor = Math.sin(habbitSectorAngle*circleShift / (180 / Math.PI));
-    const yTranslateFactor = Math.cos(habbitSectorAngle*circleShift / (180 / Math.PI));
+    const xTranslateFactor = Math.sin(habbitSectorAngle*(circleShift+circleRotationStep) / (180 / Math.PI));
+    const yTranslateFactor = Math.cos(habbitSectorAngle*(circleShift+circleRotationStep) / (180 / Math.PI));
     const xPos = (amountOfSteps+2)*circleWidth*xTranslateFactor - stepWidth*yTranslateFactor/2;
     const yPos = (amountOfSteps+2)*circleWidth*yTranslateFactor + stepWidth*xTranslateFactor/2;
-    const rotAngl = -1*habbitSectorAngle*circleShift;
+    const rotAngl = -1*habbitSectorAngle*(circleShift+circleRotationStep);
     stepList.push(
       <div className='habbit-header blur'
            key={`header${circleShift}`}
@@ -499,14 +500,14 @@ export default class LifeCircleScene extends Component {
   };
 
   getHabbitSteps = (habbitCircleShift, habbit, solveCircleShift, solve) => {
-    const {amountOfSteps, circleWidth, circleCenter, habbitSectorAngle, solveSectorAngle, amountOfSolvesPerArea} = this.state;
+    const {amountOfSteps, circleWidth, circleCenter, habbitSectorAngle, solveSectorAngle, amountOfSolvesPerArea, circleRotationStep} = this.state;
     let i = amountOfSolvesPerArea;
     let stepList = [];
     while (i !== 0) {
       const innerCirclesAmount = amountOfSteps+3;
       const stepWidth = 2*circleWidth*(i+innerCirclesAmount)*Math.sin(solveSectorAngle / (180 / Math.PI) / 2);
-      const xTranslateFactor = Math.sin((solveSectorAngle*(solveCircleShift-1) + habbitSectorAngle*habbitCircleShift) / (180 / Math.PI));
-      const yTranslateFactor = Math.cos((solveSectorAngle*(solveCircleShift-1) + habbitSectorAngle*habbitCircleShift) / (180 / Math.PI));
+      const xTranslateFactor = Math.sin((solveSectorAngle*(solveCircleShift-1) + habbitSectorAngle*(habbitCircleShift+circleRotationStep)) / (180 / Math.PI));
+      const yTranslateFactor = Math.cos((solveSectorAngle*(solveCircleShift-1) + habbitSectorAngle*(habbitCircleShift+circleRotationStep)) / (180 / Math.PI));
       const skewLenghtGap = circleWidth*0.8*Math.sin(solveSectorAngle / (180 / Math.PI) / 2);
       stepList.push(
         <React.Fragment>
@@ -516,7 +517,7 @@ export default class LifeCircleScene extends Component {
                    height:circleWidth*0.8,
                    top:(circleCenter + (i+innerCirclesAmount)*circleWidth*yTranslateFactor + stepWidth*xTranslateFactor/2),
                    left:(circleCenter + (i+innerCirclesAmount)*circleWidth*xTranslateFactor - stepWidth*yTranslateFactor/2),
-                   transform:`rotate(${-1*(solveSectorAngle*(solveCircleShift-1) + habbitSectorAngle*habbitCircleShift)}deg)`}
+                   transform:`rotate(${-1*(solveSectorAngle*(solveCircleShift-1) + habbitSectorAngle*(habbitCircleShift+circleRotationStep))}deg)`}
                }>
             <div className='rightBorder'
                  style={{
@@ -548,8 +549,8 @@ export default class LifeCircleScene extends Component {
     }
     const innerCirclesAmount = amountOfSteps+4+amountOfSolvesPerArea;
     const stepWidth = 2*circleWidth*(innerCirclesAmount)*Math.sin(solveSectorAngle / (180 / Math.PI) / 2);
-    const xTranslateFactor = Math.sin((solveSectorAngle*(solveCircleShift-1) + habbitSectorAngle*habbitCircleShift) / (180 / Math.PI));
-    const yTranslateFactor = Math.cos((solveSectorAngle*(solveCircleShift-1) + habbitSectorAngle*habbitCircleShift) / (180 / Math.PI));
+    const xTranslateFactor = Math.sin((solveSectorAngle*(solveCircleShift-1) + habbitSectorAngle*(habbitCircleShift+circleRotationStep)) / (180 / Math.PI));
+    const yTranslateFactor = Math.cos((solveSectorAngle*(solveCircleShift-1) + habbitSectorAngle*(habbitCircleShift+circleRotationStep)) / (180 / Math.PI));
     stepList.push(
       <div className='habbit-header blur'
            style={
@@ -557,7 +558,7 @@ export default class LifeCircleScene extends Component {
                height:circleWidth*1.2,
                top:(circleCenter + (innerCirclesAmount)*circleWidth*yTranslateFactor + stepWidth*xTranslateFactor/2),
                left:(circleCenter + (innerCirclesAmount)*circleWidth*xTranslateFactor - stepWidth*yTranslateFactor/2),
-               transform:`rotate(${-1*(solveSectorAngle*(solveCircleShift-1) + habbitSectorAngle*habbitCircleShift)}deg)`,
+               transform:`rotate(${-1*(solveSectorAngle*(solveCircleShift-1) + habbitSectorAngle*(habbitCircleShift+circleRotationStep))}deg)`,
                'background-color':`${habbit.color || '#FFFCCC'}`,
                'border-bottom-left-radius': circleWidth*0.8,
                'border-bottom-right-radius': circleWidth*0.8,
