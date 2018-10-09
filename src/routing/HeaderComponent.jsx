@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-//import './HabitTrackerScene.css';
+import '../styles/mainHeader.css';
 
  class HeaderComponent extends Component {
   constructor(props) {
@@ -21,8 +21,8 @@ import { withRouter } from 'react-router-dom';
       <React.Fragment>
       <h1 className='main-header'>Менятель жизни от Johanas Azzaid</h1>
         <div>
-          <button onClick={this.goToLifeCircleScene}>Круг жизни</button>
-          <button onClick={this.goHabbitTrackerScene}>Треккер привычек</button>
+          <button className='header-button' onClick={this.goToLifeCircleScene}>Круг жизни</button>
+          <button className='header-button' onClick={this.goHabbitTrackerScene}>Треккер привычек</button>
         </div>
       </React.Fragment>
     )

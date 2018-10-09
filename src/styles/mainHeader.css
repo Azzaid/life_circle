@@ -1,0 +1,6 @@
+.header-button {
+    border: solid 2px rgb(30, 43, 88);
+    border-radius: 20px;
+    background-color: rgba(30, 43, 88, 0.8);
+    color: rgb(235, 235, 235);
+}

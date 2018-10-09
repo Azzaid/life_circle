@@ -1,6 +1,6 @@
 .habit-tracker{
-    width: 100vw;
-    min-width: 800px;
+    width: 100%;
+    min-width: 1600px;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -18,7 +18,7 @@
 .earth{
     position: relative;
     width: 600px;
-    margin-bottom: -151px;
+    bottom: -151px;
     transition: 1s;
     transition-timing-function:ease-in-out;
 }
@@ -69,10 +69,11 @@
 }
 
 .great-turtle {
+    position: relative;
+    top:-60px;
+    left:-100px;
     width: 1200px;
     height: 757px;
-    margin-top: -60px;
-    margin-left:-188px;
     transform-origin: center;
     transform: rotate(-12deg);
     background: url(../images/turtle.png);

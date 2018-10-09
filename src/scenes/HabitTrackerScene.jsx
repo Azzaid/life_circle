@@ -78,9 +78,8 @@ export default class HabitTrackerScene extends Component {
   };
 
   skewTower = () => {
-    let randomNumber = this.state.elephantTowerSkew > 0 ? -30 : 30;
-    console.log(randomNumber);
-    this.setState({earthLeftShift:randomNumber * (this.state.days.length-1), elephantTowerSkew:randomNumber})
+    let shift = this.state.elephantTowerSkew > 0 ? -30 : 30;
+    this.setState({earthLeftShift:shift * (this.state.days.length-1), elephantTowerSkew:shift})
   };
 
 
@@ -90,7 +89,7 @@ export default class HabitTrackerScene extends Component {
     setTimeout(() => {this.skewTower()}, 1500);
     return(
       <section className='habit-tracker'>
-        <img className='earth' src={earth} style={{left:`${earthLeftShift}px`}}/>
+        <img className='earth' src={earth} style={{transform:`translateX(${earthLeftShift}px)`}}/>
         <div className='elephant-tower'>
           <div className='tower-column-wrapper'>
             {days.map(day => {
@@ -116,7 +115,7 @@ export default class HabitTrackerScene extends Component {
                       marginBottom:`-${20*accomplishPercent}px`,
                       marginTop:`-${20*accomplishPercent}px`,
                       backgroundImage:`url('${habit.image}')`,
-                      left:`${elephantTowerSkew*index/2}px`
+                      transform:`translateX(${elephantTowerSkew*index/2}px)`
                     }}/>
                     </div>
                   )
