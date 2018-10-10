@@ -101,3 +101,7 @@
   filter: blur(2px);
   opacity: 0.4;
 }
+
+.habbit-header.not-chosen {
+  opacity: 0.8;
+}

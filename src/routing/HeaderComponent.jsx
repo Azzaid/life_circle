@@ -20,7 +20,7 @@ import '../styles/mainHeader.css';
     return(
       <React.Fragment>
       <h1 className='main-header'>Менятель жизни от Johanas Azzaid</h1>
-        <div>
+        <div className='navigation-buttons-wrapper'>
           <button className='header-button' onClick={this.goToLifeCircleScene}>Круг жизни</button>
           <button className='header-button' onClick={this.goHabbitTrackerScene}>Треккер привычек</button>
         </div>

@@ -289,9 +289,10 @@ export default class LifeCircleScene extends Component {
            style={
              {width:stepWidth,
                height:circleWidth*1.2,
-               top:circleCenter + yPos,
-               left:circleCenter + xPos,
-               transform:`rotate(${rotAngl}deg)`,
+               transform:`
+               translateX(${circleCenter + xPos}px)
+               translateY(${circleCenter + yPos}px)
+               rotate(${rotAngl}deg)`,
                'background-color':`${habbit.color || '#FFFCCC'}`,
                'border-bottom-left-radius': circleWidth*0.8,
                'border-bottom-right-radius': circleWidth*0.8,
@@ -320,9 +321,10 @@ export default class LifeCircleScene extends Component {
                style={
                  {width:stepWidth,
                    height:circleWidth*0.8,
-                   top:(circleCenter + (i+innerCirclesAmount)*circleWidth*yTranslateFactor + stepWidth*xTranslateFactor/2),
-                   left:(circleCenter + (i+innerCirclesAmount)*circleWidth*xTranslateFactor - stepWidth*yTranslateFactor/2),
-                   transform:`rotate(${-1*(solveSectorAngle*(solveCircleShift-1) + habbitSectorAngle*(habbitCircleShift-choosenHabbitIndex))}deg)`}
+                   transform:`
+                   translateX(${circleCenter + (i+innerCirclesAmount)*circleWidth*xTranslateFactor - stepWidth*yTranslateFactor/2}px)
+                   translateY(${circleCenter + (i+innerCirclesAmount)*circleWidth*yTranslateFactor + stepWidth*xTranslateFactor/2}px)
+                   rotate(${-1*(solveSectorAngle*(solveCircleShift-1) + habbitSectorAngle*(habbitCircleShift-choosenHabbitIndex))}deg)`}
                }>
             <div className='rightBorder'
                  style={{
@@ -361,9 +363,10 @@ export default class LifeCircleScene extends Component {
            style={
              {width:stepWidth,
                height:circleWidth*1.2,
-               top:(circleCenter + (innerCirclesAmount)*circleWidth*yTranslateFactor + stepWidth*xTranslateFactor/2),
-               left:(circleCenter + (innerCirclesAmount)*circleWidth*xTranslateFactor - stepWidth*yTranslateFactor/2),
-               transform:`rotate(${-1*(solveSectorAngle*(solveCircleShift-1) + habbitSectorAngle*(habbitCircleShift-choosenHabbitIndex))}deg)`,
+               transform:`
+               translateX(${circleCenter + (innerCirclesAmount)*circleWidth*xTranslateFactor - stepWidth*yTranslateFactor/2}px)
+               translateY(${circleCenter + (innerCirclesAmount)*circleWidth*yTranslateFactor + stepWidth*xTranslateFactor/2}px)
+               rotate(${-1*(solveSectorAngle*(solveCircleShift-1) + habbitSectorAngle*(habbitCircleShift-choosenHabbitIndex))}deg)`,
                'background-color':`${habbit.color || '#FFFCCC'}`,
                'border-bottom-left-radius': circleWidth*0.8,
                'border-bottom-right-radius': circleWidth*0.8,
