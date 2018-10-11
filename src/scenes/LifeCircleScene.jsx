@@ -381,7 +381,7 @@ export default class LifeCircleScene extends Component {
 
 
   render() {
-    const {amountOfSteps, circleWidth, circleCenter, habbitSectorAngle, habbits, amountOfSolvesPerArea} = this.state;
+    const {amountOfSteps, circleWidth, circleCenter, habbitSectorAngle, habbits, amountOfSolvesPerArea, choosenHabbitIndex} = this.state;
     return (
       <div className="App">
         <header className='App-header'
@@ -395,6 +395,7 @@ export default class LifeCircleScene extends Component {
              style={{
                width:circleWidth*(amountOfSteps+5+amountOfSolvesPerArea)*2,
                height:circleWidth*(amountOfSteps+5+amountOfSolvesPerArea)*2,
+               transform:`rotate(${habbitSectorAngle*(-choosenHabbitIndex)}deg)`
              }}
         >
             <div className='center'

@@ -18,7 +18,7 @@ export default class RootRouter extends React.Component {
             <HeaderComponent/>
           <Switch>
             <Route path={'/life_circle/life_goals'} render={this.renderScene(LifeCircleScene)}/>
-            <Route path={'/'} render={this.renderScene(HabitTrackerScene)}/>
+            <Route path={'/life_circle/habbit_tracker'} render={this.renderScene(HabitTrackerScene)}/>
           </Switch>
           </React.Fragment>
         </BrowserRouter>
