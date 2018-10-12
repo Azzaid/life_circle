@@ -6,7 +6,7 @@ export default class LifeCircleScene extends Component {
     super(props);
     this.state = {
       habbits:[
-        {name:'Финансы', color:{r:63,g:214,b:40,}, level:7,
+        {name:'Финансы', color:{r:63,g:214,b:40,}, level:6,
           solves:[
             {name:'Уменьшить траты',
               steps:[
@@ -31,7 +31,7 @@ export default class LifeCircleScene extends Component {
             }
           ],
         },
-        {name:'Бизнес', color:'#f56924', level:4,
+        {name:'Бизнес', color:{r:140,g:26,b:168,}, level:5,
           solves:[
             {name:'Сделать свой проект',
               steps:[
@@ -56,32 +56,32 @@ export default class LifeCircleScene extends Component {
             }
           ],
         },
-        {name:'Здоровье', color:'#20b2aa', level:7,
+        {name:'Здоровье', color:{r:249,g:39,b:120,}, level:6,
           solves:[
-            {name:'Продолжить сбрасывать вес',
+            {name:'Активно двигатся',
               steps:[
-                {name:'Записаться в Adrenalin GYM', done:false},
-                {name:'Записаться в ZamesStudio', done:false},
-                {name:'Записаться в BodyOn', done:true},
+                {name:'Ходить на айкидо', done:false},
+                {name:'Подниматься на работу по лестнице', done:false},
+                {name:'Успевать за сыном', done:true},
               ]
             },
-            {name:'Укрепить иммунитет',
+            {name:'Следить за питанием',
               steps:[
-                {name:'Спать минимум 8 часов', done:false},
-                {name:'Больше гулять на свежем воздухе', done:false},
-                {name:'Есть больше свежих овощей', done:true},
+                {name:'Больше белковой пищи', done:false},
+                {name:'Никакого кофе до обеда', done:false},
+                {name:'Фрукты и овощи каждый день', done:true},
               ]
             },
-            {name:'Организовать режим дня',
+            {name:'Блюсти режим дня',
               steps:[
-                {name:'Создать график сна', done:false},
-                {name:'Еда по расписанию', done:false},
-                {name:'Заранее планировать дела на день', done:true},
+                {name:'Спать 8 часов', done:false},
+                {name:'Ужинать до 19', done:false},
+                {name:'Не вставать раньше 7', done:true},
               ]
             }
           ],
         },
-        {name:'Эмоции. Яркость жизни', color:'#d277a6', level:7,
+        {name:'Эмоции. Яркость жизни', color:{r:255,g:122,b:40,}, level:3,
           solves:[
             {name:'Съездить на ПИ',
               steps:[
@@ -90,118 +90,118 @@ export default class LifeCircleScene extends Component {
                 {name:'Найти с кем оставить сына', done:true},
               ]
             },
-            {name:'Активный отдых на выходных',
+            {name:'Проводить время с друзьями',
               steps:[
-                {name:'Съездить на корпоратив с мужем', done:false},
-                {name:'Сходить всей семьей в Диназаврию', done:false},
-                {name:'Сходить семьей в аквапарк', done:true},
+                {name:'Выбираться хотя-бы раз в месяц', done:false},
+                {name:'Найти альтернативу пивным', done:false},
+                {name:'Следить за концертами в минске', done:true},
               ]
             },
-            {name:'Найти гармонию',
+            {name:'Расслабиться',
               steps:[
-                {name:'Чаще улыбаться', done:false},
-                {name:'Чаще говорить спасибо', done:false},
-                {name:'Не психовать по пустякам', done:true},
+                {name:'Не контролировать мир вокруг', done:false},
+                {name:'Не думать за близких', done:false},
+                {name:'Не пытаться исправить людей', done:true},
               ]
             }
           ],
         },
-        {name:'Творчество', color:'#bf1ac9', level:5,
+        {name:'Творчество', color:{r:24,g:153,b:150,}, level:3,
           solves:[
-            {name:'Довязать свитер',
+            {name:'Изучить Photoshop',
               steps:[
-                {name:'Докупить нитки', done:false},
-                {name:'Найти схему', done:false},
-                {name:'Вязать в обеденный сон ребенка', done:true},
+                {name:'Запланировать время', done:false},
+                {name:'Найти обучающие видео', done:false},
+                {name:'Делать хоть что-то каждую неделю', done:true},
               ]
             },
-            {name:'Сделать ремонт на кухне',
+            {name:'Сделать ремонт на балконе',
               steps:[
-                {name:'Выбрать и поклеить обои', done:false},
-                {name:'Выбрать и купить мягкий уголок в кухню', done:false},
-                {name:'Сделать подсветку рабочей поверхности', done:true},
+                {name:'Утеплить стены', done:false},
+                {name:'Выбросить хлам', done:false},
+                {name:'Закрепить свет', done:true},
               ]
             },
-            {name:'Рисовать по номерам',
+            {name:'Писать программы для себя',
               steps:[
-                {name:'Выбрать картину на кухню', done:false},
-                {name:'Рисовать картину по вечерам', done:false},
-                {name:'Повесить картину', done:true},
+                {name:'Не тратить все силы на работе', done:false},
+                {name:'Один проект за раз', done:false},
+                {name:'Планировать одну новость на неделю', done:true},
               ]
             }
           ],
         },
-        {name:'Личностный рост', color:'#30c6a6', level:6,
+        {name:'Личностный рост', color:{r:40,g:58,b:255,}, level:6,
           solves:[
-            {name:'Прочитать трилогию о войне роз',
+            {name:'Уверенность в себе',
               steps:[
-                {name:'Прочитать "Белую королеву"', done:false},
-                {name:'Прочитать "Алую королеву"', done:false},
-                {name:'Прочитать "Дочь делателей королей"', done:true},
+                {name:'Не сравнивать зарплаты. Моя выше.', done:false},
+                {name:'Не доказывать ничего быдлу.', done:false},
+                {name:'Не бежать за стадом', done:true},
               ]
             },
-            {name:'Сократить время в соц.сетях',
+            {name:'Спокойствие',
               steps:[
-                {name:'Минимум день в неделю отдыха от всех соц.сетей', done:false},
-                {name:'Проводить в соц.сетях не более 2 часов в день', done:false},
-                {name:'Звонить, а не писать в мессенджерах', done:true},
+                {name:'Не злиться на глупых', done:false},
+                {name:'Не ставить подножки соперникам', done:false},
+                {name:'Не считать соперником каждого', done:true},
               ]
             },
-            {name:'Вспомнить и улучшить навыки работы в Excel',
+            {name:'Радость',
               steps:[
-                {name:'Создать с нуля аналитику продаж', done:false},
-                {name:'Повторить  VBA', done:false},
-                {name:'Автоматизировать аналитику при помощи макросов и  VBA', done:true},
+                {name:'Понять чего я достиг', done:false},
+                {name:'Простить свои ошибки', done:false},
+                {name:'Не жить завтрашним днём', done:true},
               ]
             }
           ],
         },
-        {name:'Семья', color:'#ccff00', level:9,
+        {name:'Семья', color:{r:255,g:247,b:40,}, level:5,
           solves:[
-            {name:'Чаще общаться с родственниками',
+            {name:'Видеться с Братом',
               steps:[
-                {name:'Звонить бабушке минимум 2 раза в неделю', done:false},
-                {name:'Чаще встречаться с сестрой  и племянником', done:false},
-                {name:'Чаще навещать родителей', done:true},
+                {name:'Подать документы на шенген', done:false},
+                {name:'Скопить на поездку в польшу', done:false},
+                {name:'Узнать о карте поляка', done:true},
               ]
             },
             {name:'Разнообразить семейный досуг',
               steps:[
-                {name:'Купить цветной умный песок', done:false},
+                {name:'Собрать по квартире конструктор', done:false},
                 {name:'Придумать совместные игры', done:false},
                 {name:'Чаще выбираться семьей в город', done:true},
               ]
             },
-            {name:'Подготовить сына в садик',
+            {name:'Подготовить сына к жизни',
               steps:[
-                {name:'Разобраться с горшком', done:false},
-                {name:'Записаться в детский бассейн', done:false},
-                {name:'Попробывать сходить в Маугли', done:true},
+                {name:'Учить говорить', done:false},
+                {name:'Учить бить первым', done:false},
+                {name:'Учить мудрости предков', done:true},
               ]
             }
           ],
         },
-        {name:'Окружение', color:'#00ced1', level:6,
+        {name:'Окружение', color:{r:124,g:19,b:19,}, level:3,
           solves:[
-            {name:'Встретиться с "маркетологами" ',
+            {name:'Собрать старых друзей',
               steps:[
-                {name:'Собрать людей', done:false},
+                {name:'Найти людей', done:false},
                 {name:'Назначить дату, время и место', done:false},
-                {name:'Проконтролировать, что все придут', done:true},
+                {name:'Дважды пнуть сомневающихся', done:true},
               ]
             },
-            {name:'Убрать негативных людей из жизни',
+            {name:'Не боятся сильных людей',
               steps:[
-                {name:'Свести общение с негативными людьми на минимум', done:false},
-                {name:'Заблокировать их в соц.сетях', done:false},
-                {name:'Перестать обращать внимание на обсуждения за спиной', done:true},
+                {name:'Понять что они не такие как я', done:false},
+                {name:'Понять чего они хотят', done:false},
+                {name:'Найти точки соприкосновения', done:true},
               ]
             },
-            {name:'Пересмотреть пространство вокруг себя',
+            {name:'Улучшить своё рабочее пространство',
               steps:[
-                {name:'Разобрать шкафы с одеждой, ненужное отдать', done:false},
-                {name:'Разобрать секцию - оставить пустые полки', done:false},
-                {name:'Переговорить с соседями о велосипеде и картошке в коридорре', done:true},
+                {name:'Собрать провода в пучки', done:false},
+                {name:'Повесить мотивирующую картину', done:false},
+                {name:'Купить красивую лампу', done:true},
               ]
             }
           ],
@@ -407,11 +407,12 @@ export default class LifeCircleScene extends Component {
         >
             <div className='center'
                  style={
-                   {width:circleWidth*3,
-                     height:circleWidth*3,
-                     borderRadius:circleWidth*3,
-                     top:circleCenter-circleWidth*1.5,
-                     left:circleCenter-circleWidth*1.5}
+                   {width:circleWidth*4,
+                     height:circleWidth*4,
+                     top:circleCenter-circleWidth*2,
+                     left:circleCenter-circleWidth*2,
+                     transform:`rotate(${habbitSectorAngle*(-choosenHabbitIndex)}deg)`
+                   }
                  }
             />
             {habbits.map((habbit, index) => {

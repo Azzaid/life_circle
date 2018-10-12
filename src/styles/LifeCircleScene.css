@@ -31,13 +31,17 @@
   align-items: center;
   justify-content: center;
   background: url("../images/Diocircle.png") center;
-  background-size: contain;
+  background-size: 150%;
   background-repeat: no-repeat;
+  filter: saturate(80%);
+  opacity: 0.8;
 }
 
 .circle-body {
   position: relative;
   transform-origin: center;
+  filter: saturate(100%);
+  opacity: 1;
   transition: 3s;
 }
 
@@ -120,13 +124,15 @@
   position: absolute;
   width: 2px;
   height: 2px;
-  background: url("../images/vitruvian.png") center;
+  background: url("../images/stairway.png") top 55px left -20px;
   background-size:contain;
+  transform-origin: center;
+  transition: 3s;
 }
 
 .not-chosen {
   filter: blur(2px) saturate(30%);
-  opacity: 0.2;
+  opacity: 0.5;
 }
 
 .habbit-header.not-chosen {
