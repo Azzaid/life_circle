@@ -1,14 +1,15 @@
 {
-  "main.css": "static/css/main.b6f365b0.css",
-  "main.css.map": "static/css/main.b6f365b0.css.map",
-  "main.js": "static/js/main.d77d7224.js",
-  "main.js.map": "static/js/main.d77d7224.js.map",
+  "main.css": "static/css/main.b5ebdb92.css",
+  "main.css.map": "static/css/main.b5ebdb92.css.map",
+  "main.js": "static/js/main.6630b78a.js",
+  "main.js.map": "static/js/main.6630b78a.js.map",
+  "static\\media\\Diocircle.png": "static/media/Diocircle.cfeb4bd9.png",
   "static\\media\\earth_slow.gif": "static/media/earth_slow.2c840dc1.gif",
   "static\\media\\el_1.png": "static/media/el_1.d4c161f2.png",
   "static\\media\\el_2.png": "static/media/el_2.c76f8fe5.png",
   "static\\media\\el_3.png": "static/media/el_3.efff09fc.png",
   "static\\media\\el_4.png": "static/media/el_4.6782e179.png",
   "static\\media\\space.png": "static/media/space.57300898.png",
-  "static\\media\\turtle.png": "static/media/turtle.59095460.png",
-  "static\\media\\vitruvian.png": "static/media/vitruvian.b3a5b21c.png"
+  "static\\media\\stairway.png": "static/media/stairway.2bf5e1fc.png",
+  "static\\media\\turtle.png": "static/media/turtle.59095460.png"
 }
