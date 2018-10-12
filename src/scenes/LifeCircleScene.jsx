@@ -6,57 +6,57 @@ export default class LifeCircleScene extends Component {
     super(props);
     this.state = {
       habbits:[
-        {name:'Финансы', color:'#00ff7f', level:7,
+        {name:'Финансы', color:{r:63,g:214,b:40,}, level:7,
           solves:[
             {name:'Уменьшить траты',
               steps:[
-                {name:'Заранее просчитать траты', done:false},
-                {name:'Установить лимиты на день', done:false},
-                {name:'Организовать НЗ', done:true},
+                {name:'Есть меньше вкусностей', done:false},
+                {name:'Соблюдать лимиты на день', done:false},
+                {name:'Реже лазить в НЗ', done:true},
               ]
             },
-            {name:'Прохождение ИС мужем',
+            {name:'Подготовится к ПР',
               steps:[
-                {name:'Вкусно и полезно кормить', done:false},
-                {name:'Купить много иван-чая', done:false},
-                {name:'Временно уменьшить мужу обязанности по дому', done:true},
+                {name:'Каждый день читать "Совершенный код"', done:false},
+                {name:'Изучить Node js', done:false},
+                {name:'Меньше спрашивать ментора', done:true},
               ]
             },
-            {name:'Научиться откладывать деньги',
+            {name:'Понять куда трачу деньги',
               steps:[
-                {name:'Стараться тратить меньше запланированного', done:false},
-                {name: 'Не залазить в НЗ ', done:false},
-                {name:'Соотносить желания с потребностями', done:true},
+                {name:'Подшивать чеки за месяц', done:false},
+                {name: 'Сделать четче домашнюю бухгалтерию', done:false},
+                {name:'Покупать себе что-то несъедобное с каждой зарплаты', done:true},
               ]
             }
           ],
         },
-        {name:'Бизнес', color:'#f56924', level:5,
+        {name:'Бизнес', color:'#f56924', level:4,
           solves:[
-            {name:'Выучить английский',
+            {name:'Сделать свой проект',
               steps:[
-                {name:'Пройти тест на занние языка в Streamline', done:false},
-                {name:'Установить dualingvo', done:false},
-                {name:'Учить 30 новых английских слов в день', done:true},
+                {name:'Дособирать механику', done:false},
+                {name:'Найти художника-энтузиаста', done:false},
+                {name:'Сделать не так как нравится мне', done:true},
               ]
             },
-            {name:'Выучить хотя бы 1 язык программирования (JS|PHYTON)',
+            {name:'Выпустить проект в свет',
               steps:[
-                {name:'Изучить html и css для попадания в Rolling Scopes ', done:false},
-                {name:'Попасть и окончить Rolling Scopes', done:false},
-                {name:'Попытаться прослушать и выполнить задания курса EDX', done:true},
+                {name:'Изучить правила хостинга Kongregate', done:false},
+                {name:'Создать и выложить главный сервер', done:false},
+                {name:'Попросить знакомых о рекламе на своих страничках', done:true},
               ]
             },
-            {name:'Определиться с дальнейшим местом работы',
+            {name:'Монетизировать проект',
               steps:[
-                {name:'Уточнить, что происходит на новом месте работы', done:false},
-                {name:'Обновить резюме, походить по собеседованиям ', done:false},
-                {name:'Принять окончательное решение', done:true},
+                {name:'Смириться с тем что это нужно', done:false},
+                {name:'Уточнить способы монетизации на Kongregate', done:false},
+                {name:'Вытряхивать деньги из пользователей как последняя тварь', done:true},
               ]
             }
           ],
         },
-        {name:'Здоровье', color:'#20b2aa', level:8,
+        {name:'Здоровье', color:'#20b2aa', level:7,
           solves:[
             {name:'Продолжить сбрасывать вес',
               steps:[
@@ -208,7 +208,7 @@ export default class LifeCircleScene extends Component {
         },
       ],
       amountOfSteps:10,
-      circleWidth:75,
+      circleWidth:100,
       circleCenter:0,
       habbitSectorAngle:0,
       solveSectorAngle:0,
@@ -235,11 +235,14 @@ export default class LifeCircleScene extends Component {
     const {amountOfSteps, circleWidth, circleCenter, habbitSectorAngle, choosenHabbitIndex} = this.state;
     let i = amountOfSteps;
     let stepList = [];
+    const gradientString = `linear-gradient(to bottom, rgba(${habbit.color.r*0.5},${habbit.color.g*0.5},${habbit.color.b*0.5},0) 0%,rgba(${habbit.color.r*0.5},${habbit.color.g*0.5},${habbit.color.b*0.5},0.8) 10%,rgba(${habbit.color.r*0.8},${habbit.color.g*0.8},${habbit.color.b*0.8},1) 20%,rgba(${habbit.color.r},${habbit.color.g},${habbit.color.b},1) 50%,rgba(${habbit.color.r*0.8},${habbit.color.g*0.8},${habbit.color.b*0.8},1) 80%,rgba(${habbit.color.r*0.5},${habbit.color.g*0.5},${habbit.color.b*0.5},0.8) 90%,rgba(${habbit.color.r*0.5},${habbit.color.g*0.5},${habbit.color.b*0.5},0) 100%)`;
+  
     while (i !== 0) {
       const stepWidth = 2*circleWidth*(i+1)*Math.sin(habbitSectorAngle / (180 / Math.PI) / 2);
-      const xTranslateFactor = Math.sin(habbitSectorAngle*(circleShift-choosenHabbitIndex) / (180 / Math.PI));
-      const yTranslateFactor = Math.cos(habbitSectorAngle*(circleShift-choosenHabbitIndex) / (180 / Math.PI));
+      const xTranslateFactor = Math.sin(habbitSectorAngle*(circleShift) / (180 / Math.PI));
+      const yTranslateFactor = Math.cos(habbitSectorAngle*(circleShift) / (180 / Math.PI));
       const skewLenghtGap = circleWidth*0.8*Math.sin(habbitSectorAngle / (180 / Math.PI) / 2);
+      console.log('step is filled', habbit.level, (amountOfSteps-i), habbit.level >= (amountOfSteps-i));
       stepList.push(
         <div className={`step ${circleShift === choosenHabbitIndex ? "chosen" : "not-chosen"}`}
              key={`area${circleShift}${i}`}
@@ -248,12 +251,14 @@ export default class LifeCircleScene extends Component {
                  height:circleWidth*0.8,
                  transform:`translateX(${circleCenter + (i+1)*circleWidth*xTranslateFactor - stepWidth*yTranslateFactor/2}px)
                             translateY(${circleCenter + (i+1)*circleWidth*yTranslateFactor + stepWidth*xTranslateFactor/2}px)
-                            rotate(${-1*habbitSectorAngle*(circleShift-choosenHabbitIndex)}deg)`}
+                            rotate(${-1*habbitSectorAngle*(circleShift)}deg)`}
              }>
+          
           <div className='rightBorder'
             style={{
               width:stepWidth-skewLenghtGap,
-            'background-color':`${habbit.level>=i ? habbit.color : '#fff'}`,
+            'background':`${habbit.level > (amountOfSteps-i) ? gradientString : 'transparent'}`,
+              borderColor: habbit.level <= (amountOfSteps-i) ? 'white' : 'transparent',
             top:0,
             left:(skewLenghtGap*2),
             transform:`skew(${habbitSectorAngle/2}deg)`
@@ -264,11 +269,12 @@ export default class LifeCircleScene extends Component {
                  top:0,
                  left:0,
                }}
-          >{i}</div>
+          >{amountOfSteps-i + 1}</div>
           <div className='leftBorder'
                style={{
                  width:stepWidth-skewLenghtGap,
-                 'background-color':`${habbit.level>=i ? habbit.color : '#fff'}`,
+                 'background':`${habbit.level > (amountOfSteps-i) ? gradientString : 'transparent'}`,
+                 borderColor: habbit.level <= (amountOfSteps-i) ? 'white' : 'transparent',
                  top:0,
                  right:(skewLenghtGap*2),
                  transform:`skew(${-habbitSectorAngle/2}deg)`
@@ -278,11 +284,11 @@ export default class LifeCircleScene extends Component {
       i--;
     }
     const stepWidth = 2*circleWidth*(amountOfSteps+2)*Math.sin(habbitSectorAngle / (180 / Math.PI) / 2);
-    const xTranslateFactor = Math.sin(habbitSectorAngle*(circleShift-choosenHabbitIndex) / (180 / Math.PI));
-    const yTranslateFactor = Math.cos(habbitSectorAngle*(circleShift-choosenHabbitIndex) / (180 / Math.PI));
+    const xTranslateFactor = Math.sin(habbitSectorAngle*(circleShift) / (180 / Math.PI));
+    const yTranslateFactor = Math.cos(habbitSectorAngle*(circleShift) / (180 / Math.PI));
     const xPos = (amountOfSteps+2)*circleWidth*xTranslateFactor - stepWidth*yTranslateFactor/2;
     const yPos = (amountOfSteps+2)*circleWidth*yTranslateFactor + stepWidth*xTranslateFactor/2;
-    const rotAngl = -1*habbitSectorAngle*(circleShift-choosenHabbitIndex);
+    const rotAngl = -1*habbitSectorAngle*(circleShift);
     stepList.push(
       <div className={`habbit-header blur ${circleShift === choosenHabbitIndex ? "chosen" : "not-chosen"}`}
            key={`header${circleShift}`}
@@ -293,7 +299,7 @@ export default class LifeCircleScene extends Component {
                translateX(${circleCenter + xPos}px)
                translateY(${circleCenter + yPos}px)
                rotate(${rotAngl}deg)`,
-               'background-color':`${habbit.color || '#FFFCCC'}`,
+               'background':gradientString,
                'border-bottom-left-radius': circleWidth*0.8,
                'border-bottom-right-radius': circleWidth*0.8,
              }
@@ -309,27 +315,28 @@ export default class LifeCircleScene extends Component {
     const {amountOfSteps, circleWidth, circleCenter, habbitSectorAngle, solveSectorAngle, amountOfSolvesPerArea, choosenHabbitIndex} = this.state;
     let i = amountOfSolvesPerArea;
     let stepList = [];
+    const gradientString = `linear-gradient(to bottom, rgba(${habbit.color.r*0.5},${habbit.color.g*0.5},${habbit.color.b*0.5},0) 0%,rgba(${habbit.color.r*0.5},${habbit.color.g*0.5},${habbit.color.b*0.5},0.8) 10%,rgba(${habbit.color.r*0.8},${habbit.color.g*0.8},${habbit.color.b*0.8},1) 20%,rgba(${habbit.color.r},${habbit.color.g},${habbit.color.b},1) 50%,rgba(${habbit.color.r*0.8},${habbit.color.g*0.8},${habbit.color.b*0.8},1) 80%,rgba(${habbit.color.r*0.5},${habbit.color.g*0.5},${habbit.color.b*0.5},0.8) 90%,rgba(${habbit.color.r*0.5},${habbit.color.g*0.5},${habbit.color.b*0.5},0) 100%)`;
     while (i !== 0) {
       const innerCirclesAmount = amountOfSteps+3;
       const stepWidth = 2*circleWidth*(i+innerCirclesAmount)*Math.sin(solveSectorAngle / (180 / Math.PI) / 2);
-      const xTranslateFactor = Math.sin((solveSectorAngle*(solveCircleShift-1) + habbitSectorAngle*(habbitCircleShift-choosenHabbitIndex)) / (180 / Math.PI));
-      const yTranslateFactor = Math.cos((solveSectorAngle*(solveCircleShift-1) + habbitSectorAngle*(habbitCircleShift-choosenHabbitIndex)) / (180 / Math.PI));
+      const xTranslateFactor = Math.sin((solveSectorAngle*(solveCircleShift-1) + habbitSectorAngle*(habbitCircleShift)) / (180 / Math.PI));
+      const yTranslateFactor = Math.cos((solveSectorAngle*(solveCircleShift-1) + habbitSectorAngle*(habbitCircleShift)) / (180 / Math.PI));
       const skewLenghtGap = circleWidth*0.8*Math.sin(solveSectorAngle / (180 / Math.PI) / 2);
       stepList.push(
         <React.Fragment>
-          <div className={`step ${habbitCircleShift === choosenHabbitIndex ? "chosen" : "not-chosen"}`}
+          <div className={`decision ${habbitCircleShift === choosenHabbitIndex ? "chosen" : "not-chosen"}`}
                style={
                  {width:stepWidth,
                    height:circleWidth*0.8,
                    transform:`
                    translateX(${circleCenter + (i+innerCirclesAmount)*circleWidth*xTranslateFactor - stepWidth*yTranslateFactor/2}px)
                    translateY(${circleCenter + (i+innerCirclesAmount)*circleWidth*yTranslateFactor + stepWidth*xTranslateFactor/2}px)
-                   rotate(${-1*(solveSectorAngle*(solveCircleShift-1) + habbitSectorAngle*(habbitCircleShift-choosenHabbitIndex))}deg)`}
+                   rotate(${-1*(solveSectorAngle*(solveCircleShift-1) + habbitSectorAngle*(habbitCircleShift))}deg)`}
                }>
             <div className='rightBorder'
                  style={{
                    width:stepWidth-skewLenghtGap,
-                   'background-color':`${habbit.color || '#FFFCCC'}`,
+                   'background':gradientString,
                    top:0,
                    left:(skewLenghtGap*2),
                    transform:`skew(${solveSectorAngle/2}deg)`
@@ -344,7 +351,7 @@ export default class LifeCircleScene extends Component {
             <div className='leftBorder'
                  style={{
                    width:stepWidth-skewLenghtGap,
-                   'background-color':`${habbit.color || '#FFFCCC'}`,
+                   'background':gradientString,
                    top:0,
                    right:(skewLenghtGap*2),
                    transform:`skew(${-solveSectorAngle/2}deg)`
@@ -356,18 +363,18 @@ export default class LifeCircleScene extends Component {
     }
     const innerCirclesAmount = amountOfSteps+4+amountOfSolvesPerArea;
     const stepWidth = 2*circleWidth*(innerCirclesAmount)*Math.sin(solveSectorAngle / (180 / Math.PI) / 2);
-    const xTranslateFactor = Math.sin((solveSectorAngle*(solveCircleShift-1) + habbitSectorAngle*(habbitCircleShift-choosenHabbitIndex)) / (180 / Math.PI));
-    const yTranslateFactor = Math.cos((solveSectorAngle*(solveCircleShift-1) + habbitSectorAngle*(habbitCircleShift-choosenHabbitIndex)) / (180 / Math.PI));
+    const xTranslateFactor = Math.sin((solveSectorAngle*(solveCircleShift-1) + habbitSectorAngle*(habbitCircleShift)) / (180 / Math.PI));
+    const yTranslateFactor = Math.cos((solveSectorAngle*(solveCircleShift-1) + habbitSectorAngle*(habbitCircleShift)) / (180 / Math.PI));
     stepList.push(
-      <div className={`habbit-header blur ${habbitCircleShift === choosenHabbitIndex ? "chosen" : "not-chosen"}`}
+      <div className={`decision-header blur ${habbitCircleShift === choosenHabbitIndex ? "chosen" : "not-chosen"}`}
            style={
              {width:stepWidth,
                height:circleWidth*1.2,
                transform:`
                translateX(${circleCenter + (innerCirclesAmount)*circleWidth*xTranslateFactor - stepWidth*yTranslateFactor/2}px)
                translateY(${circleCenter + (innerCirclesAmount)*circleWidth*yTranslateFactor + stepWidth*xTranslateFactor/2}px)
-               rotate(${-1*(solveSectorAngle*(solveCircleShift-1) + habbitSectorAngle*(habbitCircleShift-choosenHabbitIndex))}deg)`,
-               'background-color':`${habbit.color || '#FFFCCC'}`,
+               rotate(${-1*(solveSectorAngle*(solveCircleShift-1) + habbitSectorAngle*(habbitCircleShift))}deg)`,
+               'background':gradientString,
                'border-bottom-left-radius': circleWidth*0.8,
                'border-bottom-right-radius': circleWidth*0.8,
              }
@@ -395,7 +402,7 @@ export default class LifeCircleScene extends Component {
              style={{
                width:circleWidth*(amountOfSteps+5+amountOfSolvesPerArea)*2,
                height:circleWidth*(amountOfSteps+5+amountOfSolvesPerArea)*2,
-               transform:`rotate(${habbitSectorAngle*(-choosenHabbitIndex)}deg)`
+               transform:`rotate(${habbitSectorAngle*(choosenHabbitIndex)}deg)`
              }}
         >
             <div className='center'
